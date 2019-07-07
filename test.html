@@ -19,11 +19,11 @@
 Home.prototype.render = function () {
     // TODO: return <h2>Home</h2>
     const home = document.createElement('div');
+    home.appendChild((new Header()).render());
     home.className = 'Home';
     var h2 = document.createElement("h2");
     h2.innerHTML = 'Home'
     home.appendChild(h2)
-    home.appendChild((new Header()).render());
    // window.location.hash = '/'
     return home;
 }
@@ -31,9 +31,14 @@ Home.prototype.render = function () {
 function Blog() {}
 Blog.prototype.render = function () {
     // TODO: return <h2>Blog</h2>
-    const blog = document.createElement('h2');
+
+    const blog = document.createElement('div');
+    blog.appendChild((new Header().render()));
     blog.className = 'Blog';
-    blog.innerHTML = "Blog";
+    var h3 = document.createElement("h2");
+
+    h3.innerHTML = "Blog";
+    blog.appendChild(h3)
    // window.location.hash = '#blog'
 
     return blog;
@@ -105,7 +110,9 @@ App.prototype.render = function () {
     if (window.location.pathname === '/blog'){
         var blog = document.getElementById("View")
        var blogRender = new Blog().render()
-       app.innerHTML = 'blog';
+       //this works:
+      //app.innerHTML = 'blog';
+       app.innerHTML = blogRender.innerHTML;
 
    }
 
