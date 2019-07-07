@@ -24,7 +24,7 @@ Home.prototype.render = function () {
     var h2 = document.createElement("h2");
     h2.innerHTML = 'Home'
     home.appendChild(h2)
-   // window.location.hash = '/'
+  
     return home;
 }
 
@@ -39,7 +39,7 @@ Blog.prototype.render = function () {
 
     h3.innerHTML = "Blog";
     blog.appendChild(h3)
-   // window.location.hash = '#blog'
+
 
     return blog;
 }
@@ -52,7 +52,7 @@ const routes = {
 function Link(props) {
     this.to = props.to;
     this.title = props.title;
-    //location.replace(`${this.to}`)
+
 }
 Link.prototype.render = function () {
     // TODO: return <a href="#/{to}">{title}</a>
@@ -64,9 +64,6 @@ Link.prototype.render = function () {
 
     a.href = `${this.to}`;
     a.setAttribute('href', `${this.to}`);
-    //history.pushState('', '', `${this.to}`)
-
-    //window.location.hash = `${this.to}`
 
     return a;
 
@@ -76,10 +73,9 @@ function Header() {}
 Header.prototype.render = function () {
     // TODO: return <div class="Header"><Link to="/">Home</Link><Link to="/blog">Blog</Link></div>
     const header = document.createElement('div');
-    //header.innerHTML = 'test2';
-    header.innerText = 'what';
+
     header.className = 'Header';
-    // header.append(`<div class="Header"><Link to="/">Home</Link><Link to="/blog">Blog</Link></div>`)
+
     const homeLink = new Link({ title: 'Home', to: '/' });
     const blogLink = new Link({ title: 'Blog', to: '/blog' });
 
@@ -94,9 +90,7 @@ App.prototype.render = function () {
     // TODO: return <div><Header />{routes[window.location.hash.substring(1)]()}</div>
     const app = document.createElement('div');
     app.className = 'App';
-   // app.appendChild((new Home()).render());
 
-    //window.location.hash = '/'
     var component = window.location.hash.substring(1)
 
        console.log(window.location.hash, 'hash');
@@ -110,8 +104,6 @@ App.prototype.render = function () {
     if (window.location.pathname === '/blog'){
         var blog = document.getElementById("View")
        var blogRender = new Blog().render()
-       //this works:
-      //app.innerHTML = 'blog';
        app.innerHTML = blogRender.innerHTML;
 
    }
@@ -128,15 +120,8 @@ function render() {
 
 render();
 
-window.addEventListener('hashchange', render);
-
-
-
-
 
     </script>
 
-
-    <!-- <script src="components.js"></script> -->
 </body>
 </html>
